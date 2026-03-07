@@ -206,6 +206,8 @@
         1: false,
         2: false
     };
+    
+    let bonusShown = false;
 
     function copyToClipboard(inputId, button, buttonNum) {
         const input = document.getElementById(inputId);
@@ -260,6 +262,9 @@
     }
 
     function showBonus() {
+        if (bonusShown) return;
+        bonusShown = true;
+        
         const pendingSection = document.getElementById('pendingSection');
         const bonusSection = document.getElementById('bonusSection');
         
@@ -270,6 +275,9 @@
             bonusSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
     }
+
+    // Auto-reveal bonus after 90 seconds
+    setTimeout(showBonus, 90000);
 
     // Original scroll control
     (function () {
